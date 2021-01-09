@@ -45,7 +45,7 @@ app.delete('/note/:id', (req, res) => {
 app.put('/updateNote', (req, res) => {
     db.get('Notes')
     .find({ id: Number(req.body.id) })
-   .assign({item: req.body.item})
+   .assign({note: req.body.note})
    .write()
    res.send('updated')
 })
@@ -53,7 +53,7 @@ app.put('/updateNote', (req, res) => {
 
 // POST /Notes
 app.post('/notes', (req, res) => {
-  db.get('Notes').push({ id: req.body.id, name: req.body.name, note: req.body.note})
+  db.get('Notes').push({ id: req.body.id, note: req.body.note})
   .write()
   res.send('added')
 })
