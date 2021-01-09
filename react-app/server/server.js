@@ -23,7 +23,6 @@ app.get('/Notes', (req, res) => {
   res.send(allNotes)
 })
 
-
 // GET /note/:id
 app.get('/note/:id', (req, res) => {
   const note = db.get('Notes')
@@ -31,7 +30,6 @@ app.get('/note/:id', (req, res) => {
     .value()
   res.send(note)
 })
-
 
 // DELETE /note/:id
 app.delete('/note/:id', (req, res) => {
@@ -50,7 +48,6 @@ app.put('/updateNote', (req, res) => {
    res.send('updated')
 })
 
-
 // POST /Notes
 app.post('/notes', (req, res) => {
   db.get('Notes').push({ id: req.body.id, note: req.body.note})
@@ -63,7 +60,6 @@ app.delete('/reset', (req, res) => {
     db.set('Notes', [])
     .write()
 })
-
 
 // Init
 // db.defaults({ data: [] })

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {BrowserRouter, useParams, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
-import { Button, Container, StepIcon, TextField } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import axios from 'axios';
-import NoteId from './NoteId.js';
+import NoteId from './Components/NoteId.js';
 
 class App extends Component {
   constructor() {
@@ -129,9 +129,10 @@ class App extends Component {
               <ul>
                   { !this.state.editInput ? <h3 onClick={() => this.getNote(note.id)}> { note.note } </h3> : null }
                   { this.state.editInput ? <div> <TextField onChange={ this.editNote }/> <Button onClick={() => this.sendEditNote(note.id)}>Change</Button> </div>: null }
+
                   <div className='buttonContainer'>
-                  <Button onClick={ this.editClick }>Edit</Button>
-                  <Button onClick={() => this.removeNote(note.id)}>Delete</Button>
+                    <Button onClick={ this.editClick }>Edit</Button>
+                    <Button onClick={() => this.removeNote(note.id)}>Delete</Button>
                   </div>
               </ul>
             </div>
@@ -140,12 +141,15 @@ class App extends Component {
             return (
               <BrowserRouter>
               <Switch>
+                <Route path = "/:id" component = {NoteId}/>
+              </Switch>
+              <Switch>
                 <Route path = "/">
                 <div className="App">
-                <div className="App-header">
-                  <img src={logo} className="App-logo" alt="logo" />
-                  <h2>Notes App</h2>
-                </div>
+                  <div className="App-header">
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <h2>Notes App</h2>
+                  </div>
       
                 <TextField 
                   className='noteInput' 
@@ -158,23 +162,16 @@ class App extends Component {
                 <div></div>
       
                 <Button onClick={ this.sendNote }>Add Note</Button>
-                  { notes }
+                  {notes}
                   
                 </div>
 
                 </Route>
               </Switch>
                 
-              <Switch>
-                <Route path = "/:id" >
-                  <h3>Current note:</h3>
-                  <NoteId/>
-                </Route>
-
-              </Switch>
+              
 
               </BrowserRouter>
-              
               
             );
           }

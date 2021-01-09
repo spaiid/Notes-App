@@ -13,17 +13,7 @@
   }
 }
 
-.multiline {
-  white-space: pre-wrap;
-  display: block;
-  max-width: 200px;
-}
-
 .notesContainer {
-  word-break: break-all;
-}
-
-h3, ul {
   word-break: break-all;
 }
 
