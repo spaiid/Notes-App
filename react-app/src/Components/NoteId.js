@@ -18,7 +18,7 @@ const NoteId = () => {
 
     return (
         <div className="current-note">
-            <h3>Current note:</h3>
+            <h3>Note accessed by id:</h3>
             <h3>{currNote}</h3>
         </div>
 
