@@ -15,7 +15,6 @@ class App extends Component {
       note: '',
       newNote: '',
       editInput: false,
-      usingParams: true,
       editNote: ''
     }
   
@@ -143,6 +142,7 @@ class App extends Component {
               <Switch>
                 <Route path = "/:id" component = {NoteId}/>
               </Switch>
+              
               <Switch>
                 <Route path = "/">
                 <div className="App">
@@ -168,8 +168,6 @@ class App extends Component {
 
                 </Route>
               </Switch>
-                
-              
 
               </BrowserRouter>
               
